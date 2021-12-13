@@ -1,0 +1,33 @@
+#Strimzi operator should be pre-installed in namespace
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoInfra
+metadata:
+  name: kogito-kafka-infra
+spec:
+  resource:
+    apiVersion: kafka.strimzi.io/v1beta2
+    kind: Kafka
+    name: my-cluster
+---
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoBuild
+metadata:
+  name: kedd
+spec:
+  runtime: springboot
+  type: RemoteSource
+  gitSource:
+    reference: main
+    uri: "https://github.com/dwasinge/kogito-event-driven-dmn.git"
+---
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoRuntime
+metadata:
+  name: kedd
+spec:
+  runtime: springboot
+  infra:
+    - kogito-kafka-infra
+  env:
+    - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
+      value: 'my-cluster:9092'
