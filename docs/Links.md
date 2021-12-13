@@ -22,5 +22,7 @@ https://cloud.trisotech.com/help/index.html?dmn_feel_functions.htm
 
 ## DMN/BPMN Blogs:
 https://methodandstyle.com/blog/
+
 https://methodandstyle.com/why-contexts/
+
 https://methodandstyle.com/dmn-validating-data-input/
