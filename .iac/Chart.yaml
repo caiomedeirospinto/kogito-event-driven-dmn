@@ -5,4 +5,4 @@ version: 0.1.0
 appVersion: "1.16.0"
 dependencies:
   - name: serverless
-    repository: "@klabin-helm-repo"
+    repository: "https://nexus-torre-controle-ci-cd.apps.florestal-01.latam-1.rht-labs.com/repository/helm-charts/"
