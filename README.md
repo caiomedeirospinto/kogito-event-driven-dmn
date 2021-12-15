@@ -165,3 +165,21 @@ The response will be sent to the Kafka Topic `truck-to-product-line-responses`.
    }
 }
 ```
+
+## IAC for Openshift
+
+Apply components:
+
+```bash
+helm repo add klabin-helm-repo https://nexus-torre-controle-ci-cd.apps.florestal-01.latam-1.rht-labs.com/repository/helm-charts/
+helm update --install kogito-event-driven-dmmn \
+   --create-namespace \
+   --namespace <namespace> \
+   .iac/ 
+```
+
+Cleanup:
+
+```bash
+helm uninstall kogito-event-driven-dmmn
+```

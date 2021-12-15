@@ -1,0 +1,36 @@
+serverless:
+  teamName: torre-controle
+  envs:
+    - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
+      value: kafka-bootstrap-servers
+      kind: configmap
+  runtime:
+    name: springboot
+    version: "2.3.10"
+  partOf: tempo-de-patio
+  # Configuración de Healthcheck Readiness del despliegue.
+  readinessProbe:
+    httpGet:
+      path: /actuator/health
+      port: 0
+    initialDelaySeconds: 15
+    periodSeconds: 5
+    failureThreshold: 3
+    successThreshold: 1
+  # Configuración de Healthcheck Liveness del despliegue.
+  livenessProbe:
+    httpGet:
+      path: /healthz
+      port: 0
+    initialDelaySeconds: 30
+    periodSeconds: 5
+  # Configuración de recursos destinados al despliegue.
+  resources:
+    limits:
+      cpu: 200m
+      memory: 750Mi
+    requests:
+      cpu: 50m
+      memory: 100Mi
+  configurationManager:
+    kafka-bootstrap-servers: my-cluster-kafka-bootstrap.amq-streams.svc.cluster.local:9092

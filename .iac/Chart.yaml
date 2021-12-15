@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kogito-event-driven-dmn
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+dependencies:
+  - name: serverless
+    repository: "@klabin-helm-repo"
