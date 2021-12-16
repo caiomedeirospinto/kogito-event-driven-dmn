@@ -21,7 +21,7 @@ serverless:
   # Configuración de Healthcheck Liveness del despliegue.
   livenessProbe:
     httpGet:
-      path: /healthz
+      path: /actuator/health
       port: 0
     initialDelaySeconds: 30
     periodSeconds: 5
